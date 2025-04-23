@@ -69,8 +69,8 @@ footer a {
 }
 
 .temperature-icon {
-  font-size: 44px;
-  margin-top: 12px;
+  width: 88px;
+  height: 88px;
 }
 
 .temperature-value {

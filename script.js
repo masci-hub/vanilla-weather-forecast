@@ -47,6 +47,8 @@ function displayWeather(response) {
   conditionElement.innerHTML = condition;
   cityElement.innerHTML = city;
   temperatureValue.innerHTML = temperature;
+
+  getForecast(response.data.city);
 }
 
 function searchCity(city) {
@@ -62,7 +64,15 @@ function handleSearch(event) {
   searchCity(searchInput.value);
 }
 
-function displayForecast() {
+function getForecast(city) {
+  let apiKey = "733615547b11515efo464ab9111t0c1b";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+  console.log(response.data);
+
   let days = ["Sat", "Sun", "Mon", "Tue", "Wed"];
   let forecastHtml = "";
 
@@ -89,4 +99,3 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSearch);
 
 searchCity("Rome");
-displayForecast();
